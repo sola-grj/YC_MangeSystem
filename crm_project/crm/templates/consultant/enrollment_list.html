@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <a class="btn btn-sm btn-info" href="{% url 'add_enrollment' customer_id %}">新增</a>
+    <table class="table table-striped table-hover table-bordered">
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>为什么报名</th>
+            <th>学完想达到的具体期望</th>
+            <th>我已认真阅读完培训协议并同意全部协议内容</th>
+            <th>审批通过</th>
+            <th>报名</th>
+            <th>备注</th>
+            <th>删除状态</th>
+            <th>客户名称</th>
+            <th>校区</th>
+            <th>所报班级</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for customer in all_enrollment %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ customer.why_us }}</td>
+                <td>{{ customer.your_expectation }}</td>
+                <td>{{ customer.contract_agreed }}</td>
+                <td>{{ customer.contract_approved }}</td>
+                <td>{{ customer.enrolled_date }}</td>
+                <td>{{ customer.memo }}</td>
+                <td>{{ customer.delete_status }}</td>
+                <td>{{ customer.customer.name }}</td>
+                <td>{{ customer.school.name }}</td>
+                <td>{{ customer.enrolment_class }}</td>
+                <td><a class="btn btn-info btn-sm" href="{% url 'edit_enrollment' customer.pk %}">编辑</a></td>
+            </tr>
+
+        {% endfor %}
+
+
+        </tbody>
+    </table>
+
+{% endblock %}

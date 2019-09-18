@@ -1,0 +1,97 @@
+{% extends 'layout.html' %}
+
+
+{% block content %}
+
+    {% load my_tags %}
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">缴费记录表</h3>
+        </div>
+        <div class="panel-body">
+
+            <div>
+{#                <a href="{% url 'add_payment_record' customer_id %}" class="btn btn-primary">新增</a>#}
+            </div>
+
+            <form action="" class="form-inline pull-right">
+                <input type="text" name="query" class="form-control">
+                <button class="btn btn-sm btn-success">搜索</button>
+            </form>
+
+
+                {% csrf_token %}
+                {#                <select name="action" id="" class="form-control">#}
+                {##}
+                {##}
+                {#                    {% if request.path_info == '/crm/customer_list/' %}#}
+                {#                        <option value="multi_apply">公户转私户</option>#}
+                {#                    {% else %}#}
+                {#                        <option value="multi_pub">私户转公户</option>#}
+                {#                    {% endif %}#}
+                {#                    <option value="multi_del">批量删除</option>#}
+                {##}
+                {#                </select>#}
+                {#                <button class="btn btn-sm btn-primary">应用</button>#}
+
+                <table class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+
+                        <th>序号</th>
+                        <th>客户</th>
+                        <th>费用类型</th>
+                        <th>费用数额</th>
+                        <th>交款日期</th>
+                        <th>课程名</th>
+                        <th>班级类型</th>
+                        <th>所报班级</th>
+                        <th>销售</th>
+                        <th>审核</th>
+                        <th>确认人</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for payment_record in all_payment_records %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ payment_record.customer }}</td>
+                            <td>{{ payment_record.get_pay_type_display }}</td>
+                            <td>{{ payment_record.paid_fee }}</td>
+                            <td>{{ payment_record.date }}</td>
+                            <td>{{ payment_record.get_course_display }}</td>
+                            <td>{{ payment_record.get_class_type_display }}</td>
+                            <td>{{ payment_record.enrolment_class }}</td>
+                            <td>{{ payment_record.consultant }}</td>
+                            <td>{{ payment_record.get_status_display }}</td>
+                            <td>{{ payment_record.confirm_user }}</td>
+                            <td><a href="{% url "edit_payment_record" payment_record.pk %}"
+                                   class="btn btn-primary btn-sm">编辑</a>
+                            </td>
+
+                        </tr>
+                    {% endfor %}
+
+
+                    </tbody>
+                </table>
+
+
+
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+
+                    {{ page_html }}
+
+                </ul>
+            </nav>
+
+        </div>
+    </div>
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends 'layout.html' %}
+{% block css %}
+    <style>
+        table thead th {
+            text-align: center;
+        }
+
+        table tbody td {
+            text-align: center;
+        }
+    </style>
+
+{% endblock %}
+{% block content %}
+    <div class="table-responsive">
+        <a class="btn btn-success btn-sm" href="{% url 'add_customer' %}">添加客户信息</a>
+        <a class="btn btn-success btn-sm" href="{% url 'customer_list' %}">查看所有的公共客户信息</a>
+        <table class="table table-striped table-hover table-bordered" >
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>QQ号码</th>
+                <th>QQ昵称</th>
+                <th>真实姓名</th>
+                <th>性别</th>
+                <th>出生日期</th>
+                <th>手机号码</th>
+                <th>客户来源</th>
+                <th>转介绍自学员</th>
+                <th>咨询课程</th>
+                <th>班级类型</th>
+                <th>客户备注</th>
+                <th>客户状态</th>
+                <th>最后跟进日期</th>
+                <th>预计再次跟进时间</th>
+                <th>对应销售</th>
+                <th>所报的班级</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for customer in customers %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ customer.qq }}</td>
+                    <td>{{ customer.qq_name }}</td>
+                    <td>{{ customer.name }}</td>
+                    <td>{{ customer.get_sex_display }}</td>
+                    <td>{{ customer.birthday|date }}</td>
+                    <td>{{ customer.phone }}</td>
+                    <td>{{ customer.get_course_display }}</td>
+                    <td>{{ customer.introduce_from }}</td>
+                    <td>{{ customer.get_course_display }}</td>
+                    <td>{{ customer.get_class_type_display }}</td>
+                    <td>{{ customer.customer_note|default:'暂无信息' }}</td>
+                    <td>{{ customer.show_status|safe }}</td>
+                    <td>{{ customer.last_consult_date|date }}</td>
+                    <td>{{ customer.next_date|date }}</td>
+                    <td>{{ customer.consultant.name|default:'暂无销售跟进' }}</td>
+                    <td>{{ customer.show_classes }}</td>
+                    <td>
+                        <a class="btn btn-danger btn-sm" href="/del_customer/?id={{ customer.pk }}">删除</a>
+                        <a class="btn btn-info btn-sm" href="{% url 'edit_customer' customer.pk %}">编辑</a>
+
+                    </td>
+                </tr>
+
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

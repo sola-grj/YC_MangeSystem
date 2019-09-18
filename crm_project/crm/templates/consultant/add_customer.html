@@ -1,0 +1,128 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+    {#    <div class="form-group">#}
+    {#        <label for="{{ form_obj.username.id_for_label }}"#}
+    {#               class="col-md-2 control-label">{{ form_obj.username.label }}</label>#}
+    {#        <div class="col-md-10">#}
+    {#            {{ form_obj.username }}#}
+    {#            <span class="help-block">{{ form_obj.username.errors.0 }}</span>#}
+    {#        </div>#}
+    {#    </div>#}
+
+    <div><h1>添加客户</h1></div>
+    {#    <form action="" method="post" novalidate="novalidate">#}
+    {#        {% csrf_token %}#}
+    {#        {% for field in form_obj %}#}
+    {#            <p>#}
+    {#                <label for="{{ field.id_for_label }}">{{ field.label }}</label>#}
+    {#                {{ field }}#}
+    {#                {{ field.errors.0 }}#}
+    {#            </p>#}
+    {##}
+    {#        {% endfor %}#}
+    <form class="form-horizontal" action="" method="post" novalidate>
+        {% csrf_token %}
+        {% for field in form_obj %}
+            <div class="form-group">
+                <label for="{{ field.id_for_label }}" class="col-sm-2 control-label">{{ field.label }}</label>
+                <div class="col-sm-10">
+                    {{ field }}
+                    {{ field.errors.0 }}
+                </div>
+            </div>
+
+        {% endfor %}
+        <p>
+            <button>添加</button>
+        </p>
+    </form>
+
+
+
+    {#    </form>#}
+
+    {#                    <p>#}
+    {#                        <label for="{{ form_obj.qq.id_for_label }}">{{ form_obj.qq.label }}</label>#}
+    {#                        {{ form_obj.qq }}#}
+    {#                        {{ form_obj.qq.errors.0 }}#}
+    {#                    </p>#}
+    {#                    <p>#}
+    {#                        <label for="{{ form_obj.qq_name.id_for_label }}">{{ form_obj.qq_name.label }}</label>#}
+    {#                        {{ form_obj.qq_name }}#}
+    {#                        {{ form_obj.qq_name.errors.0 }}#}
+    {#                    </p>#}
+    {#                    <p>#}
+    {#                        <label for="{{ form_obj.name.id_for_label }}">{{ form_obj.name.label }}</label>#}
+    {#                        {{ form_obj.name }}#}
+    {#                        {{ form_obj.name.errors.0 }}#}
+    {#                    </p>#}
+    {#                    <p>#}
+    {#                        <label for="{{ form_obj.sex.id_for_label }}">{{ form_obj.sex.label }}</label>#}
+    {#                        {{ form_obj.sex }}#}
+    {#                        {{ form_obj.sex.errors.0 }}#}
+    {#                    </p>#}
+    {#                    <p>#}
+    {#                        <label for="{{ form_obj.birthday.id_for_label }}">{{ form_obj.birthday.label }}</label>#}
+    {#                        {{ form_obj.birthday }}#}
+    {#                        {{ form_obj.birthday.errors.0 }}#}
+    {#                    </p>#}
+    {#                    <p>#}
+    {#                        <label for="{{ form_obj.phone.id_for_label }}">{{ form_obj.phone.label }}</label>#}
+    {#                        {{ form_obj.phone }}#}
+    {#                        {{ form_obj.phone.errors.0 }}#}
+    {#                    </p>#}
+    {#                    <p>#}
+    {#                        <label for="{{ form_obj.source.id_for_label }}">{{ form_obj.source.label }}</label>#}
+    {#                        {{ form_obj.source }}#}
+    {#                        {{ form_obj.source.errors.0 }}#}
+    {#                    </p>#}
+    {#                    <p>#}
+    {#                        <label for="{{ form_obj.course.id_for_label }}">{{ form_obj.course.label }}</label>#}
+    {#                        {{ form_obj.course }}#}
+    {#                        {{ form_obj.course.errors.0 }}#}
+    {#                    </p>#}
+    {#                    <p>#}
+    {#                        <label for="{{ form_obj.class_type.id_for_label }}">{{ form_obj.class_type.label }}</label>#}
+    {#                        {{ form_obj.class_type }}#}
+    {#                        {{ form_obj.class_type.errors.0 }}#}
+    {#                    </p>#}
+    {#                    <p>#}
+    {#                        <label for="{{ form_obj.customer_note.id_for_label }}">{{ form_obj.customer_note.label }}</label>#}
+    {#                        {{ form_obj.customer_note }}#}
+    {#                        {{ form_obj.customer_note.errors.0 }}#}
+    {#                    </p>#}
+    {#                    <p>#}
+    {#                        <label for="{{ form_obj.status.id_for_label }}">{{ form_obj.status.label }}</label>#}
+    {#                        {{ form_obj.status }}#}
+    {#                        {{ form_obj.status.errors.0 }}#}
+    {#                    </p>#}
+    {#                    <p>#}
+    {#                        <label for="{{ form_obj.last_consult_date.id_for_label }}">{{ form_obj.last_consult_date.label }}</label>#}
+    {#                        {{ form_obj.last_consult_date }}#}
+    {#                        {{ form_obj.last_consult_date.errors.0 }}#}
+    {#                    </p>#}
+    {#                    <p>#}
+    {#                        <label for="{{ form_obj.next_date.id_for_label }}">{{ form_obj.next_date.label }}</label>#}
+    {#                        {{ form_obj.next_date }}#}
+    {#                        {{ form_obj.next_date.errors.0 }}#}
+    {#                    </p>#}
+    {#                    <p>#}
+    {#                        <label for="{{ form_obj.consultant.id_for_label }}">{{ form_obj.consultant.label }}</label>#}
+    {#                        {{ form_obj.consultant }}#}
+    {#                        {{ form_obj.consultant.errors.0 }}#}
+    {#                    </p>#}
+    {#                    <p>#}
+    {#                        <label for="{{ form_obj.class_list.id_for_label }}">{{ form_obj.class_list.label }}</label>#}
+    {#                        {{ form_obj.class_list }}#}
+    {#                        {{ form_obj.class_list.errors.0 }}#}
+    {#                    </p>#}
+
+
+
+
+
+
+{% endblock %}
+<body>
+
